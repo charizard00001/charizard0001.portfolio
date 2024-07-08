@@ -1,0 +1,279 @@
+@import 'flipcard.scss';
+
+$dark: #121212;
+$green: #65e52c;
+$card-shadow : rgba(88, 107, 74, 0.25) 0px 25px 50px -12px;
+
+html{
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+
+
+// Utility classes
+.code{
+    font-family: 'Space Mono', monospace;
+    color: $green;
+}
+
+.section-head{
+    font-family: 'Space Mono', monospace;
+    color: white;
+    word-spacing: -1rem;
+}
+
+.title{
+    font-size: 4rem;
+    margin: 2.5rem auto;
+    text-align: center;
+    @media screen and (max-width:480px) {
+        font-size: 3rem;;
+    }
+}
+
+.mask-dark{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+}
+
+.vcenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin fixed-bg-cover($url){
+    background: url($url);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body {
+    background-color: $dark;
+    font-family: 'Inter', monospace;
+    font-weight: 500;
+    letter-spacing: -0.25px;
+    color: white;
+    overflow-y: overlay;
+    scrollbar-gutter: stable;
+}
+
+// Navbar
+header{
+    li{list-style: none;}
+    a{
+        text-decoration: none;
+        color: lighten($color: $dark, $amount: 90%);
+        font-size: 1rem;
+    }
+    .logo{
+        color: $green;
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: 'Space Mono';
+        margin-right: 1.1rem;
+    }
+    .navbar{
+        display: flex;
+        float: right;
+        li{
+            display: flex;
+            padding: 0.5rem 1rem;
+            row-gap: 1rem;
+            transition: 0.3s;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        li:hover{
+            background-color: lighten($color: $dark, $amount: 10%);
+        }
+    }
+
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.75);
+    backdrop-filter: blur(15px);
+    padding: 0.8rem 3rem;
+
+    @media screen and (max-width:600px){
+        padding: 0.8rem 1.5rem;
+    }
+
+    #menu-icon{
+        color: white;
+    }
+}
+
+// Scrollbar
+body::-webkit-scrollbar{
+    width:10px;
+    overflow: overlay;
+}
+body::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255,0.6);
+
+}
+
+// Welcome section
+main{
+    @include fixed-bg-cover("https://free4kwallpapers.com/uploads/originals/2018/08/24/dark-forest.-wallpaper_.jpg");
+    width: 100%;
+    height: 100vh;
+
+    .title{
+        color: white;
+        font-size: 5rem;
+    }
+
+    .caption{
+        font-size: 1.6rem;
+        word-spacing: 0.5rem;
+        margin-top: 20px;
+    }
+}
+
+section{
+    width: 100%;
+    height: auto;
+    margin-top: 3rem;
+}
+
+.about-me-details{
+    width: 70%;
+    margin: 0 auto;
+    text-align:justify;
+    .bio{
+        font-size: 1.5rem;
+        line-height: 2.1rem;
+    }
+}
+
+#contact-section{
+    @include fixed-bg-cover("https://i.pinimg.com/originals/a9/3a/4d/a93a4d079e9c837879598c665acd2c13.jpg");
+    .title{
+        padding-top: 3rem;
+    }
+    form{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        width: 60%;
+        height: auto;
+        background-color: rgb(0,0,0, 0.3);
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        padding: 2rem;
+
+        input, textarea{
+            background: $dark;
+            color: lighten($dark, 60%);
+            padding: 1rem;
+            font-size: 1rem;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            font-weight: 550;
+            margin: 0 10px;
+        }
+        input[type=text], input[type=email]{
+            width: 45%;
+        }
+        textarea{
+            width:100%;
+            margin-top: 2rem;
+        }
+
+        .send{
+            font-size: 1rem;
+            padding: 0.8rem 1.5rem;
+            margin-top: 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: 0.5s;
+            &:hover{
+                background-color: $green;
+                transform: translateY(-0.2rem);
+                box-shadow: rgba(113, 113, 206, 0.25) 0px 13px 27px -5px, rgba(255, 255, 255, 0.3) 0px 8px 16px -8px;
+            }
+        }
+
+        @media only screen and (max-width:900px) {
+            width: 80%;
+        }
+        @media only screen and (max-width:660px) {
+            input[type=text], input[type=email]{
+                width: 100%;
+                margin: 1rem 0;
+            }
+        }
+        @media screen and (max-width:480px) {
+            width:100%;
+        }
+    }
+}
+
+.footer{
+    .made-with-love{
+        font-size: 1.2rem;
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+    #heart{
+        animation-name: beat;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+    @keyframes beat{
+        from{
+            color: red;
+            transform: scale(1.5);
+        }
+        to{
+            color: $green;
+        }
+    }
+
+    .social-media-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .social-media-btn{
+        text-decoration: none;
+        font-size: 1.2rem;
+        margin: 0.5rem 1.2rem;
+        padding: 1rem 1.5rem;
+        color: white;
+        border-radius: 10px;
+        transition: 0.5s;
+
+        &:hover{
+            background: $green;
+            color: black;
+        }
+    }
+
+}
